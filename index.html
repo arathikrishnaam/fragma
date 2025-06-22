@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Snippet Manager</title>
+    
+    <!-- Link to our custom CSS -->
+    <link rel="stylesheet" href="styles/style.css">
+    
+    <!-- Font Awesome for icons (CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Main App Container -->
+    <div class="app-container">
+        
+        <!-- Header Section -->
+        <header class="app-header">
+            <h1><i class="fas fa-code"></i> Code Snippet Manager</h1>
+            <p>Save, organize, and search your reusable code snippets</p>
+        </header>
+
+        <!-- Add New Snippet Form -->
+        <section class="add-snippet-section">
+            <h2>Add New Snippet</h2>
+            <form id="snippet-form" class="snippet-form">
+                <!-- Title Input -->
+                <div class="input-group">
+                    <label for="snippet-title">Title:</label>
+                    <input type="text" id="snippet-title" placeholder="Enter snippet title" required>
+                </div>
+
+                <!-- Language Selection -->
+                <div class="input-group">
+                    <label for="snippet-language">Language:</label>
+                    <select id="snippet-language" required>
+                        <option value="">Select Language</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="html">HTML</option>
+                        <option value="css">CSS</option>
+                        <option value="python">Python</option>
+                        <option value="java">Java</option>
+                        <option value="cpp">C++</option>
+                        <option value="react">React</option>
+                        <option value="nodejs">Node.js</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Code Content Textarea -->
+                <div class="input-group">
+                    <label for="snippet-content">Code:</label>
+                    <textarea id="snippet-content" placeholder="Paste your code here..." rows="8" required></textarea>
+                </div>
+
+                <!-- Form Buttons -->
+                <div class="form-buttons">
+                    <button type="submit" id="add-btn" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add Snippet
+                    </button>
+                    <button type="button" id="cancel-btn" class="btn btn-secondary" style="display: none;">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Search and Filter Section -->
+        <section class="search-section">
+            <h2>Your Code Snippets</h2>
+            <div class="search-controls">
+                <!-- Search Input -->
+                <div class="search-input-group">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Search snippets by title...">
+                </div>
+
+                <!-- Language Filter -->
+                <div class="filter-group">
+                    <select id="language-filter">
+                        <option value="">All Languages</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="html">HTML</option>
+                        <option value="css">CSS</option>
+                        <option value="python">Python</option>
+                        <option value="java">Java</option>
+                        <option value="cpp">C++</option>
+                        <option value="react">React</option>
+                        <option value="nodejs">Node.js</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Snippets Display Area -->
+        <section class="snippets-section">
+            <!-- Loading indicator -->
+            <div id="loading" class="loading" style="display: none;">
+                <i class="fas fa-spinner fa-spin"></i> Loading snippets...
+            </div>
+
+            <!-- No snippets message -->
+            <div id="no-snippets" class="no-snippets" style="display: none;">
+                <i class="fas fa-code-branch"></i>
+                <p>No code snippets found. Add your first snippet above!</p>
+            </div>
+
+            <!-- Snippets container - will be populated by JavaScript -->
+            <div id="snippets-container" class="snippets-container">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.0.0/firebase-app.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.0.0/firebase-firestore.min.js"></script>
+    
+    <!-- Our JavaScript files -->
+    <script src="scripts/firebase.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+</html>
